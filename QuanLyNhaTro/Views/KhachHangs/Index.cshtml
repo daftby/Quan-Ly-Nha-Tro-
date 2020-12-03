@@ -1,0 +1,66 @@
+﻿@model IEnumerable<QuanLyNhaTro.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CMND)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgheNghiep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueQuan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhong)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CMND)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgheNghiep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QueQuan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgaySinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPhong)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaKH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaKH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaKH })
+        </td>
+    </tr>
+}
+
+</table>

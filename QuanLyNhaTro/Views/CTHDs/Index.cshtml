@@ -1,0 +1,101 @@
+﻿@model IEnumerable<QuanLyNhaTro.Models.ViewModel>
+
+@{
+    ViewBag.Title = "Chi Tiết Hóa ĐƠn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Chi Tiết Hóa Đơn </h2>
+<p>
+    @foreach (var m in ViewBag.Main)
+    {
+        <b><text> Mã Hóa Đơn  @m.hoaDon.MaHD</text></b>
+        <br />
+        <b>
+            <text> Tên Phòng : @m.dsPhong.TenPhong</text>
+        </b>
+
+    }
+    @foreach (var item in ViewBag.Sub)
+    {
+        <br />
+        <b>
+            <text> Tên Khách Hàng : @item.khachHang.HoTen</text>
+        </b>
+    }
+
+
+</p>
+
+<table  class="table table-bordered" style="text-align:center;">
+
+
+    <tr>
+        <th>
+           Số TT
+        </th>
+        <th>
+           Mã Hóa Đơn
+        </th>
+       
+        <th>
+           Số Điện 
+        </th>
+        <th>
+           Số Nước
+        </th>
+        <th>
+          Giá Điện 
+        </th>
+        <th>
+           Giá Nước
+        </th>
+        <th>
+            Giá Tiền Phòng
+        </th>
+        <th>
+           Tổng Tiền Cần Thanh Toán
+        </th>
+    </tr>
+  @{ 
+      int i = 0;
+  }
+
+@foreach (var item in ViewBag.Sub)
+{
+    i++;
+
+    <tr>
+        <td>
+           @i
+        </td>
+        <td>
+            @item.cthd.MaHD    
+        </td>
+       
+        <td>
+            @item.cthd.SoDien
+        </td>
+        <td>
+            @item.cthd.SoNuoc
+        </td>
+        <td>
+            @item.cthd.GiaDien
+        </td>
+        <td>
+           @item.cthd.GiaNuoc
+        </td>
+        <td>
+          @String.Format("{0:0,##0}",@item.khachHang.DSPhong.GiaTienPhong)
+        </td>
+        <td>
+            @String.Format("{0:0,##0}", @item.ThanhTien)
+        </td>
+
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Quay Lại Trang Thông Tin Hóa Đơn", "Index","HoaDons")
+

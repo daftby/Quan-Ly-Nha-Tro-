@@ -1,0 +1,73 @@
+﻿@model QuanLyNhaTro.Models.CTHD
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CTHD</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoNuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoNuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaDien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaNuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaNuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoaDon.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoaDon.MaKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.HoTen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,77 @@
+﻿@model QuanLyNhaTro.Models.DSPhong
+@using QuanLyNhaTro.Models;
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi Tiết Phòng</h2>
+<div class="row" style="text-align:center;margin-left:100px;">
+    <div>
+        <h4>Thông Tin Phòng Trọ</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Thông Tin Phòng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenPhong)
+            </dd>
+
+            <dt>
+                Mã Đăng Ký Phòng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaPhong)
+            </dd>
+
+            <dt>
+                Tình Trạng Phòng Hiện Tại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TinhTrangPhong)
+            </dd>
+
+            <dt>
+                Hình ảnh mô tả phòng
+            </dt>
+
+            <dd>
+                @Html.Image("../../Images/" + @Model.HinhPhong, "alt Hình Phòng", "100")
+            </dd>
+
+            <dt>
+                Giá Tiền Thuê Phòng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GiaTienPhong)
+            </dd>
+
+            <dt>
+                Thông Tin Mô Tả Phòng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ThongTinChiTietPhong)
+            </dd>
+            <dt>
+                Thông Tin Khách Hàng Đang Thuê Phòng
+            </dt>
+
+            @*<dd>
+                @Html.DisplayFor(model => model.KhachHang.HoTen)
+            </dd>*@
+
+        </dl>
+        <p>
+            @Html.ActionLink("Sửa Thông Tin Phòng", "Edit", new { id = Model.MaPhong }) |
+            @Html.ActionLink("Quay Lại Trang Chủ", "Index")
+            @Html.ActionLink("Xóa Sản Phâm Này ", "Delete", new { id = Model.MaPhong })
+        </p>
+    </div>
+
+</div>

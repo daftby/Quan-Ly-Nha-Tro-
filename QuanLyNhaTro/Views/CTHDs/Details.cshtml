@@ -1,0 +1,67 @@
+﻿@model QuanLyNhaTro.Models.CTHD
+@using QuanLyNhaTro.Models
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CTHD</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoNuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoNuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaDien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaNuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaNuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoaDon.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoaDon.MaKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.HoTen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHD }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

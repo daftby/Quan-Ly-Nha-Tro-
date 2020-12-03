@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLyNhaTro.Models.DSPhong>
+@using QuanLyNhaTro.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách Phòng Trống</h2>
+
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-bordered" style="text-align:center;">
+                <tr>
+                    <th>Mô Tả</th>
+                    <th>Tên Phòng (Click vào tên Phòng để xem chi tiết)</th>
+                    <th>Tình Trạng Phòng</th>
+                    <th>Giá Tiền</th>
+                    <th>Đặt Phòng</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+
+                            @Html.Image("../../Images/" + item.HinhPhong, "alt", "100")
+                        </td>
+                        <td>
+                            <a target="_self" href="@Url.Action("Details","DSPhongs",new {id=item.MaPhong})">@item.TenPhong <br /></a>
+                            @item.ThongTinChiTietPhong
+                        </td>
+                        <td>
+                            @item.TinhTrangPhong
+                        </td>
+                        <td>@item.GiaTienPhong.ToString() VND</td>
+                        <td>
+                                <form action="@Url.Action("Index","DatPhong")" method="get">
+                                    <button type="submit" class="btn btn-success btn-sm">Đặt Phòng</button>
+                                </form>
+                            </td>
+
+                    </tr>
+                }
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
+

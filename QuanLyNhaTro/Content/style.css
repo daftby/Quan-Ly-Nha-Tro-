@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+/*----------Reusable_Component------------*/
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.fas,
+.fab {
+    font-size: 24px;
+}
+
+
+/*----------Header------------*/
+
+.header {
+    width: 100%;
+    position: relative;
+    height: 150px;
+    /*background-image: url("imagine/beach.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+.header-img {
+    margin-left: 25%;
+    margin-top: 25px;
+    position: absolute;
+    display: inline-block;
+}
+
+.banner {
+    position: absolute;
+    display: inline-block;
+    margin-left: 35%;
+    margin-top: 25px;
+}
+
+.banner h2 {
+    color: #66CDAA;
+    margin-left: 55px;
+    margin-top: 20px;
+}
+
+
+/*----------Nav_bar------------*/
+
+.nav-bar {
+    width: 100%;
+    height: 50px;
+    background-color: #66CDAA;
+    
+     
+}
+
+.aa {
+    margin-left: 25%;
+   
+}
+
+.nav-item {
+    font-size: x-large;
+ }
+
+.active{
+    width:200px;
+}
+.nav-link {
+    color: aliceblue;
+   
+   
+
+}
+
+
+.nav-bar ul li>.sub-menu {
+    list-style: none;
+    position: absolute;
+    display: none;
+}
+
+.nav-bar ul li:hover .sub-menu {
+    display: block;
+    margin-top: 0;
+    background-color: #66CDAA;
+    z-index:100;
+}
+
+
+
+/*----------left------------*/
+
+.left {
+    float: left;
+    display:block;
+    width: 10%;
+    height: 100vh;
+    background-color: white;
+}
+/*----------Right------------*/
+.right {
+    float: right;
+    width: 10%;
+    height: 100vh;
+    background-color: white;
+}
+
+
+
+/*----------content------------*/
+
+.content {
+    width: 80%;
+    height: 100vh;
+    background-color: white;
+    float:left
+}
+
+.color {
+    background-color: #66CDAA;
+}
+
+.contact-form {
+    width: 50%;
+    margin-left : 20%;
+}
+
+/*----------login------------*/
+
+.login {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<QuanLyNhaTro.Models.HoaDon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table  class="table table-bordered" style="text-align:center;" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DSPhong.TenPhong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayLapHD)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a target="_self" href="@Url.Action("Index","CTHDs",new { mahd = item.MaHD})">@Html.DisplayFor(modelItenm => item.MaHD)</a>
+              
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPhong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DSPhong.TenPhong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLapHD)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaHD }) |
+                @Html.ActionLink("Xem Chi Tiết", "Details", new { id = item.MaHD }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaHD })
+            </td>
+        </tr>
+    }
+
+</table>

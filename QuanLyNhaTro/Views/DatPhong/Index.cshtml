@@ -1,0 +1,46 @@
+﻿@using QuanLyNhaTro.Models;
+@model QuanLyNhaTro.Models.ListPhongTrong
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "DatPhong", FormMethod.Post))
+{
+
+    <h1> Thông Tin Khách Hàng Đăng Ký Phòng</h1>
+
+
+    <h4> Chọn Mã Phòng Cần Đặt </h4>
+    <tr>
+
+
+        <td> @Html.DropDownList("DropDownList", (IEnumerable<SelectListItem>)ViewBag.List) </td>
+
+    </tr>
+    
+
+
+    <h3>Mã Khách Hàng</h3>
+    <input type="text" name="txtMakh" class="form-control"/><br />
+
+    <h3> Họ Tên</h3>
+    <input type="text" name="txtHoTen" class="form-control"/><br />
+
+    <h3> Chứng Minh Nhân Dân</h3>
+    <input type="text" name="txtCMND" class="form-control"/><br />
+
+    <h3> Nghề Nghiệp</h3>
+    <input type="text" name="txtNgheNghiep" class="form-control"/><br />
+
+    <h3> Quê Quán</h3>
+    <input type="text" name="txtQueQuan" class="form-control"/><br />
+
+    <h3> Ngày Tháng Năm Sinh</h3>
+    <input type="text" name="txtNgaySinh" placeholder="yyyy-MM-dd" class="form-control"/><br />
+    <br />
+
+
+
+    <button type="submit" class="btn btn-light">Save</button>
+}
