@@ -26,22 +26,31 @@
                 {
                     <tr>
                         <td class="text-center">
-                            
+
                             @Html.Image("../../Images/" + item.HinhPhong, "alt", "100")
                         </td>
                         <td>
+
                             <a target="_self" href="@Url.Action("Details","DSPhongs",new {id=item.MaPhong})">@item.TenPhong <br /></a>
                             @item.ThongTinChiTietPhong
                         </td>
                         <td>
-                            @item.TinhTrangPhong
+                            @if (item.TinhTrangPhong == true)
+                            {
+                                <p>còn trống</p>
+                            }
+                            else
+                            {
+                                <p>Phòng đã được đặt</p>
+                            }
+
                         </td>
                         <td>@item.GiaTienPhong.ToString() VND</td>
                         @*<td>
-                            <form action="" method="get">
-                                <button type="submit" class="btn btn-success btn-sm">Đặt Phòng</button>
-                            </form>
-                        </td>*@
+                                <form action="" method="get">
+                                    <button type="submit" class="btn btn-success btn-sm">Đặt Phòng</button>
+                                </form>
+                            </td>*@
 
                     </tr>
                 }

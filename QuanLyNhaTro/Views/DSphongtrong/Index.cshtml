@@ -30,11 +30,15 @@
                             @Html.Image("../../Images/" + item.HinhPhong, "alt", "100")
                         </td>
                         <td>
-                            <a target="_self" href="@Url.Action("Details","DSPhongs",new {id=item.MaPhong})">@item.TenPhong <br /></a>
+                            <a target="_self" href="@Url.Action("Details", "DSPhongs", new { id = item.MaPhong })">@item.TenPhong <br /></a>
                             @item.ThongTinChiTietPhong
                         </td>
                         <td>
-                            @item.TinhTrangPhong
+                            @if (item.TinhTrangPhong == true)
+                            {
+                               <p>còn trống</p> 
+                            }
+                            
                         </td>
                         <td>@item.GiaTienPhong.ToString() VND</td>
                         <td>

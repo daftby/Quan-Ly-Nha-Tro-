@@ -27,12 +27,33 @@ namespace QuanLyNhaTro.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DSPhong dSPhong = db.DSPhongs.Find(id);
-            if (dSPhong == null)
+            var dsphong = db.DSPhongs.ToList();
+            var khachhang = db.KhachHangs.ToList();
+
+            var chitietphong = from k in khachhang
+                               join d in dsphong on k.MaPhong equals d.MaPhong
+                               where (k.MaPhong == id)
+                               select new ViewModel
+                               {
+                                   khachHang = k,
+                                   dsPhong = d
+                               };
+
+            //DSPhong dSPhong = db.DSPhongs.Find(id);
+            KhachHang kh = db.KhachHangs.Where(x => x.MaPhong == id).SingleOrDefault();
+            DSPhong ds = db.DSPhongs.Where(x => x.MaPhong == id).SingleOrDefault();
+
+            //if (dSPhong == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            if (kh == null)
             {
-                return HttpNotFound();
+                ViewBag.kh = 0;
+                ViewBag.dsphong = ds;
             }
-            return View(dSPhong);
+            ViewBag.ChiTietPhong = chitietphong;
+            return View();
         }
 
         // GET: DSPhongs/Create

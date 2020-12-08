@@ -5,15 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa Thông Tin Khách Hàng</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn Có Chắc Muốn Xóa Chứ ?</h3>
 <div>
     <h4>KhachHang</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.HoTen)
+            Họ Tên
         </dt>
 
         <dd>
@@ -21,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CMND)
+            Chứng Minh Nhân Dân
         </dt>
 
         <dd>
@@ -29,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgheNghiep)
+            Nghề Nghiệp
         </dt>
 
         <dd>
@@ -37,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.QueQuan)
+            Quê Quán
         </dt>
 
         <dd>
@@ -45,7 +45,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
+            Ngày Sinh
         </dt>
 
         <dd>
@@ -53,7 +53,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DSPhong.TenPhong)
+            Tên Phòng
         </dt>
 
         <dd>
@@ -62,12 +62,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Xóa Thông Tin " class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại Trang Chủ ", "Index")
         </div>
     }
 </div>

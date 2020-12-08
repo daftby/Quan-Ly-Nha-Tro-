@@ -1,16 +1,17 @@
 ﻿@model QuanLyNhaTro.Models.DSPhong
-
+@using QuanLyNhaTro.Models
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Sửa Thông Tin Phòng</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "DSPhongs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>DSPhong</h4>
         <hr />
@@ -18,7 +19,7 @@
         @Html.HiddenFor(model => model.MaPhong)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TenPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TenPhong, "Tên Phòng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TenPhong, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenPhong, "", new { @class = "text-danger" })
@@ -26,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TinhTrangPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TinhTrangPhong, "Tình Trạng Phòng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.TinhTrangPhong)
@@ -36,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GiaTienPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GiaTienPhong, "Giá Tiền Phòng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GiaTienPhong, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GiaTienPhong, "", new { @class = "text-danger" })
@@ -44,15 +45,17 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HinhPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.HinhPhong, "Hình Phòng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HinhPhong, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HinhPhong, "", new { @class = "text-danger" })
+                @*@Html.Image("../../" + Model.HinhPhong,"","100")
+                    @Html.TextBox("HinhPhong","",new { type ="file"})*@
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ThongTinChiTietPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ThongTinChiTietPhong, "Thông Tin Chi Tiết Phòng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ThongTinChiTietPhong, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ThongTinChiTietPhong, "", new { @class = "text-danger" })
@@ -61,16 +64,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Lưu Thông Tin " class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay Lại Trang Chủ ", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

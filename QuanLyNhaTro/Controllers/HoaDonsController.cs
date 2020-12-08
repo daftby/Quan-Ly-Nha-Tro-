@@ -115,6 +115,15 @@ namespace QuanLyNhaTro.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             HoaDon hoaDon = db.HoaDons.Find(id);
+            CTHD cthd = db.CTHDs.Where(x => x.MaHD == id).SingleOrDefault();
+
+            if (cthd != null)
+            {
+                db.CTHDs.Remove(cthd);
+                db.SaveChanges();
+            }
+           
+
             db.HoaDons.Remove(hoaDon);
             db.SaveChanges();
             return RedirectToAction("Index");

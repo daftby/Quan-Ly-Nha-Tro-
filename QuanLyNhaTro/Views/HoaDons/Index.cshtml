@@ -5,27 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Thông Tin Các Hóa Đơn</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo 1 Hóa Đơn Mới", "Create")
 </p>
-<table  class="table table-bordered" style="text-align:center;" >
+<table class="table table-bordered" style="text-align:center;">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MaHD)
+            Mã Hóa Đơn
+            <br />
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+            Họ Tên Khách Hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaPhong)
+            Mã Phòng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DSPhong.TenPhong)
+            Tên Phòng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayLapHD)
+            Ngày Lập Hóa Đơn
         </th>
         <th></th>
     </tr>
@@ -35,7 +37,7 @@
         <tr>
             <td>
                 <a target="_self" href="@Url.Action("Index","CTHDs",new { mahd = item.MaHD})">@Html.DisplayFor(modelItenm => item.MaHD)</a>
-              
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.KhachHang.HoTen)
@@ -51,7 +53,7 @@
             </td>
             <td>
                 @Html.ActionLink("Sửa", "Edit", new { id = item.MaHD }) |
-                @Html.ActionLink("Xem Chi Tiết", "Details", new { id = item.MaHD }) |
+                <a target="_self" href="@Url.Action("Index","CTHDs",new { mahd = item.MaHD})">Xem Chi Tiết Phòng</a>
                 @Html.ActionLink("Xóa", "Delete", new { id = item.MaHD })
             </td>
         </tr>

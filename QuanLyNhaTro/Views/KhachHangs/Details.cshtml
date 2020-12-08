@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2> Chi Tiết Khách Hàng</h2>
 
-<div>
-    <h4>KhachHang</h4>
+<div class="row" style="text-align:center;margin-left:300px;">
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.HoTen)
+            Họ Tên Khách Hàng
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CMND)
+            Chứng Minh Nhân Dân
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgheNghiep)
+            Nghề Nghiệp
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.QueQuan)
+            Quê Quán
         </dt>
 
         <dd>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
+            Ngày Sinh
         </dt>
 
         <dd>
@@ -52,16 +52,47 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DSPhong.TenPhong)
+            Mã Phòng
         </dt>
+        @{
+            if (ViewBag.dSPhong == 0)
+                {
+                 <dd>  Chưa có thông tin Phòng Được Đăng Ký</dd>
+            }
+            else
+            {
 
-        <dd>
-            @Html.DisplayFor(model => model.DSPhong.TenPhong)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DSPhong.MaPhong)
+                </dd>
+
+            }
+
+        }
+
+        <dt>
+            Tên Phòng
+        </dt>
+        @{
+            if (ViewBag.dSPhong == 0)
+            {
+                <dd>  Chưa có thông tin Phòng Được Đăng Ký</dd>
+            }
+            else
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.DSPhong.TenPhong)
+                </dd>
+
+            }
+
+        }
+     
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa Thông Tin", "Edit", new { id = Model.MaKH }) |
+    @Html.ActionLink("Quay Lại Trang Chủ", "Index")
 </p>

@@ -35,17 +35,24 @@
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "KhachHangs")">Danh sách khách hàng</a></li>
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "DSPhongs")">Danh sách phòng</a></li>
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "DSphongtrong")">Phòng còn trống</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "DatPhong")">Đặt phòng</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index", "HoaDons")">Thông Tin Các Hóa Đơn</a>
+                <a class="nav-link" href="@Url.Action("Index", "HoaDons")">Tính Tiền</a>
             </li>
+            
 
         </ul>
     </div>
     <div class="left clearfix"></div>
     <div class="content">
         @RenderBody()
+        <footer>
+            <h1>&copy; @DateTime.Now.Year - Hệ Thống Phòng Trọ Sinh Viên Online</h1>
+        </footer>
     </div>
     <div class="right"></div>
 

@@ -279,7 +279,12 @@
     <Content Include="Images\Phong13.jpg" />
     <Content Include="Images\Phong14.jpg" />
     <Content Include="Images\Phong15.jpg" />
+    <Content Include="Images\Phong16.jpg" />
+    <Content Include="Images\Phong17.jpg" />
+    <Content Include="Images\Phong18.jpg" />
+    <Content Include="Images\Phong19.jpg" />
     <Content Include="Images\Phong2.jpg" />
+    <Content Include="Images\Phong20.jpg" />
     <Content Include="Images\Phong3.jpg" />
     <Content Include="Images\Phong4.jpg" />
     <Content Include="Images\Phong5.jpg" />
@@ -392,6 +397,7 @@
     <Content Include="Views\CTHDs\Index.cshtml" />
     <Content Include="Views\DSphongtrong\Index.cshtml" />
     <Content Include="Views\DatPhong\Index.cshtml" />
+    <Content Include="Views\CTHDs\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

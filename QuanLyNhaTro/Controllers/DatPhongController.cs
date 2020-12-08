@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyNhaTro.Models;
+using System.Data.Entity;
+using System.Net;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+
 namespace QuanLyNhaTro.Controllers
 {
     public class DatPhongController : Controller
@@ -22,11 +27,9 @@ namespace QuanLyNhaTro.Controllers
         }
         [HttpPost]
         public ActionResult Index(ListPhongTrong l, FormCollection f)
-        {
-            KhachHang kh = new KhachHang();
-            DSPhong p = new DSPhong();
+        {                                                      
             var MaPhong = f["DropDownList"].ToString();
-            var Makh = f.Get("txtMakh");
+            var Makh = "KH00" + (db.KhachHangs.Count() + 1).ToString();
             var HoTenKH = f.Get("txtHoTen");
             var CMNDKH = f.Get("txtCMND");
             var ngheNghiepKH = f.Get("txtNgheNghiep");
@@ -34,8 +37,7 @@ namespace QuanLyNhaTro.Controllers
             var ngaySinhKH = f.Get("txtNgaySinh");
             DateTime oDate = Convert.ToDateTime(ngaySinhKH);
 
-            
-
+            KhachHang kh = new KhachHang();
             kh.MaKH = Makh;
             kh.HoTen = HoTenKH;
             kh.CMND = CMNDKH;
@@ -44,17 +46,29 @@ namespace QuanLyNhaTro.Controllers
             kh.NgaySinh = oDate;
             kh.MaPhong = MaPhong;
 
+            HoaDon hd = new HoaDon();
+            hd.MaHD = "HD00" + (db.HoaDons.Count() + 1).ToString();
+            hd.MaKH = kh.MaKH;
+            hd.MaPhong = kh.MaPhong;
+            hd.NgayLapHD = DateTime.Now;
+
+            var phong = db.DSPhongs.Where(c => c.MaPhong == MaPhong).SingleOrDefault();
             if (ModelState.IsValid)
             {
-                //var phong = db.DSPhongs.Where(p => p.MaPhong == MaPhong).SingleOrDefault();
-                //phong.TinhTrangPhong = true;
-                
-
+                //cap nhat tinh trang phong
+                phong.TinhTrangPhong = false;
+                db.Entry(phong).State = EntityState.Modified;
+                //them khach hang
                 db.KhachHangs.Add(kh);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //them 1 hoa don moi         
+                db.HoaDons.Add(hd);
+                db.SaveChanges();                
             }
-            return View(kh);
+
+            return RedirectToAction("Index");
         }
+        
+       
     }
 }

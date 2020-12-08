@@ -32,5 +32,6 @@ namespace QuanLyNhaTro.Models
         public virtual ICollection<HoaDon> HoaDons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual KhachHang khachHang { get; set; }
     }
 }

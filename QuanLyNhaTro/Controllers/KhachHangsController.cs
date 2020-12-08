@@ -29,9 +29,14 @@ namespace QuanLyNhaTro.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             KhachHang khachHang = db.KhachHangs.Find(id);
+            DSPhong dsPhong = db.DSPhongs.Where(x => x.MaPhong == khachHang.MaPhong).SingleOrDefault();
             if (khachHang == null)
             {
                 return HttpNotFound();
+            }
+            if (dsPhong == null)
+            {
+                ViewBag.dSPhong = 0;
             }
             return View(khachHang);
         }
@@ -115,6 +120,27 @@ namespace QuanLyNhaTro.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             KhachHang khachHang = db.KhachHangs.Find(id);
+            var phong = db.DSPhongs.Where(c => c.MaPhong == khachHang.MaPhong).SingleOrDefault();
+            
+            var hd = db.HoaDons.Where(x => x.MaKH == id).SingleOrDefault();
+            var cthd = db.CTHDs.Where(x => x.MaKH == id).SingleOrDefault();
+
+            phong.TinhTrangPhong = true;      
+            db.Entry(phong).State = EntityState.Modified;
+
+            if (cthd != null)
+            {
+                db.CTHDs.Remove(cthd);
+                db.SaveChanges();
+            }
+            
+            if (hd != null)
+            {
+                db.HoaDons.Remove(hd);
+                db.SaveChanges();
+            }
+            
+          
             db.KhachHangs.Remove(khachHang);
             db.SaveChanges();
             return RedirectToAction("Index");

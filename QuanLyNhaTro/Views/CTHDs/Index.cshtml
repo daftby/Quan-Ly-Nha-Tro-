@@ -1,9 +1,10 @@
-﻿@model IEnumerable<QuanLyNhaTro.Models.ViewModel>
-
+﻿@model QuanLyNhaTro.Models.ViewModel
+@using QuanLyNhaTro.Models;
 @{
-    ViewBag.Title = "Chi Tiết Hóa ĐƠn";
+    ViewBag.Title = "Chi Tiết Hóa Đơn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2> Chi Tiết Hóa Đơn </h2>
 <p>
@@ -16,6 +17,7 @@
         </b>
 
     }
+
     @foreach (var item in ViewBag.Sub)
     {
         <br />
@@ -24,78 +26,116 @@
         </b>
     }
 
-
 </p>
+@{
+    if (ViewBag.TinhTranghd == 0)
+    {
+        <p>Chưa có thông tin </p>
+        <h4>Nhập thông tin chi tiết</h4>           
+        using (Html.BeginForm("New", "CTHDs", new { id = ViewBag.ID }, FormMethod.Get))
+        {
+                <h3>Số điện</h3>
+                <input type="text" name="txtSD" class="form-control" /><br />
+                <h3>Số nước</h3>
+                <input type="text" name="txtSN" class="form-control" /><br />
+                <h3>Giá điện</h3>
+                <input type="text" name="txtGiaDien" class="form-control" /><br />
+                <h3>Giá nước</h3>
+                <input type="text" name="txtGiaNuoc" class="form-control" /><br />
 
-<table  class="table table-bordered" style="text-align:center;">
+                <button type="submit" class="btn btn-light">Lưu thông tin</button>
+            }       
+        
+    }
+    else
+    {
+        <table class="table table-bordered" style="text-align:center;">
+            <tr>
+                <th>
+                  Mã Khách Hàng
+                </th>
+                <th>
+                    Mã Hóa Đơn
+                </th>
 
+                <th>
+                    Số Điện
+                </th>
+                <th>
+                    Số Nước
+                </th>
+                <th>
+                    Giá Điện
+                </th>
+                <th>
+                    Giá Nước
+                </th>
+                <th>
+                    Giá Tiền Phòng
+                </th>
+                <th>
+                    Tổng Tiền Cần Thanh Toán
+                </th>
+            </tr>
+         
 
-    <tr>
-        <th>
-           Số TT
-        </th>
-        <th>
-           Mã Hóa Đơn
-        </th>
-       
-        <th>
-           Số Điện 
-        </th>
-        <th>
-           Số Nước
-        </th>
-        <th>
-          Giá Điện 
-        </th>
-        <th>
-           Giá Nước
-        </th>
-        <th>
-            Giá Tiền Phòng
-        </th>
-        <th>
-           Tổng Tiền Cần Thanh Toán
-        </th>
-    </tr>
-  @{ 
-      int i = 0;
-  }
+            @foreach (var item in ViewBag.Sub)
+            {
+                
 
-@foreach (var item in ViewBag.Sub)
-{
-    i++;
+                <tr>
+                    <td>
+                        @item.khachHang.MaKH
+                    </td>
+                    <td>
+                        @item.cthd.MaHD
+                    </td>
 
-    <tr>
-        <td>
-           @i
-        </td>
-        <td>
-            @item.cthd.MaHD    
-        </td>
-       
-        <td>
-            @item.cthd.SoDien
-        </td>
-        <td>
-            @item.cthd.SoNuoc
-        </td>
-        <td>
-            @item.cthd.GiaDien
-        </td>
-        <td>
-           @item.cthd.GiaNuoc
-        </td>
-        <td>
-          @String.Format("{0:0,##0}",@item.khachHang.DSPhong.GiaTienPhong)
-        </td>
-        <td>
-            @String.Format("{0:0,##0}", @item.ThanhTien)
-        </td>
+                    <td>
+                        @item.cthd.SoDien
+                    </td>
+                    <td>
+                        
+                        @item.cthd.SoNuoc
+                    </td>
+                    <td>
+                        @item.cthd.GiaDien
+                    </td>
+                    <td>
+                        @item.cthd.GiaNuoc
+                    </td>
+                    <td>
+                        @String.Format("{0:0,##0}", @item.khachHang.DSPhong.GiaTienPhong)
+                    </td>
+                    <td>
+                        @String.Format("{0:0,##0}", @item.ThanhTien)
+                    </td>
 
-    </tr>
+                </tr>
+                
+                <tr>
+                    <td colspan="6">
+                        <form action="@Url.Action("Order","CTHDs")" method="get">
+                            Thông tin Đặt Phòng - Email: <input type="email" name="Email" />
+                            -Mã Hóa Đơn Cần Gửi<input type="text" name="mahd" />
+                            -Điện Thoại<input type="text" name="Phone" />
+                            <input type="submit" value="Đặt Phong" class="btr btn-success btn-sm" />
+                            <a class="btn btn-success btn-sm" href="@Url.Action("Index","DSphongtrong")">
+                                Tiếp Tục Đặt Phòng
+                            </a>
+                        </form>
+                    </td>
+                </tr>
+            }
+           
+            
+        </table>
+    }
+
 }
 
-</table>
-
-@Html.ActionLink("Quay Lại Trang Thông Tin Hóa Đơn", "Index","HoaDons")
+<br />
+<br />
+<br />
+@Html.ActionLink("Quay Lại Trang Thông Tin Hóa Đơn", "Index", "HoaDons")
 
